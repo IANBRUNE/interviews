@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 import {
   Button,
   SafeAreaView,
@@ -17,6 +18,14 @@ const styles = StyleSheet.create({
 });
 
 const HomeView = ({navigation}) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios.get('https://api.publicapis.org/entries').then(result => {
+      setData(result.data.entries.splice(0, 10));
+      console.log(result.data.entries.splice(0, 10));
+    });
+  }, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
