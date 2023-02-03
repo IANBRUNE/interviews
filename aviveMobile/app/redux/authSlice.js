@@ -9,7 +9,6 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      console.log('action', action);
       // mock integration with auth API
       if (
         // could to toLowerCase() for apples to apples in real integration
